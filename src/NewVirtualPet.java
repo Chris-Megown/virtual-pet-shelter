@@ -28,6 +28,9 @@ public class NewVirtualPet {
 		return petName;
 	}
 	
+	public String getDescription() {
+		return description;
+	}
 
 	public String statusPet() {
 		return "\n" + petName + "'s current stats are as follows.\nHunger: " + hunger + "\nThirst: " + thirst

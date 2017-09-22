@@ -1,18 +1,17 @@
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 public class VirtualPetShelter {
 
-	Map<String, Set<NewVirtualPet>> myShelter = new HashMap<String, Set<NewVirtualPet>>();
+	Map<String, NewVirtualPet> myShelter = new HashMap<String, NewVirtualPet>();
 
 	public void addPet(NewVirtualPet newPet) {
 		String nameSearch = newPet.getName();
-		myShelter.put(nameSearch, new HashSet<>());
+		myShelter.put(nameSearch, newPet);
+	}
 
-		Set<NewVirtualPet> adoptablePets = myShelter.get(nameSearch);
-		adoptablePets.add(newPet);
-
+	public void removePet(NewVirtualPet newPet) {
+		String nameSearch = newPet.getName();
+		myShelter.remove(nameSearch);
 	}
 }
