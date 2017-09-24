@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,6 +10,10 @@ public class VirtualPetShelter {
 
 	public NewVirtualPet whichPet(String name) {
 		return myShelter.get(name);
+	}
+
+	public Collection<NewVirtualPet> allPets() {
+		return myShelter.values();
 	}
 
 	public String getName(String petName) {
@@ -36,6 +41,12 @@ public class VirtualPetShelter {
 	public void waterAllPets() {
 		for (NewVirtualPet watering : myShelter.values()) {
 			watering.water();
+		}
+	}
+
+	public void tickAllPets() {
+		for (NewVirtualPet petToTick : myShelter.values()) {
+			petToTick.tick();
 		}
 	}
 

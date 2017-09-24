@@ -13,56 +13,70 @@ public class VirtualPetShelterApp {
 		petShelter.addPet(wanda);
 		System.out.println("Welcome to Petopia!");
 		System.out.println("The happiest pet-place on Earth!");
-		System.out.println("This is the status of your current pets:");
-		System.out.println();
-		System.out.println("Name\t\t|Hunger\t|Thirst\t|Boredom");
-		System.out.println("___________________________________________");
-		for (NewVirtualPet currentPet : petShelter.myShelter.values()) {
-			System.out.println(currentPet.getName() + "\t" + currentPet.getHunger() + "\t" + currentPet.getBoredom());
+		
 
-			String userChoice;
-			while (!petShelter.myShelter.isEmpty()) {
+		String userChoice;
+		// might make this false within a boolean
+		while (!petShelter.myShelter.isEmpty()) {
 
-				// System.out.println(newPet);
-				// need to put the for-each loop for initial pets here
-
-				do {
-					System.out.println("What would you like to do next?");
-
-					System.out.println("\t1. Feed the pets");
-					System.out.println("\t2. Water the pets");
-					System.out.println("\t3. Play with a pet");
-					System.out.println("\t4. Adopt a pet");
-					System.out.println("\t5. Admit a pet");
-					System.out.println("\t6. Quit");
-					userChoice = input.next();
-				} while (!userChoice.equals("1") && !userChoice.equals("2") && !userChoice.equals("3")
-						&& !userChoice.equals("4") && !userChoice.equals("5") && !userChoice.equals("6"));
-
-				switch (userChoice) {
-
-				case "1":
-					petShelter.feedAllPets();
-					System.out.println("All the pets have had their food bowls refilled!");
-
-				case "2":
-					petShelter.waterAllPets();
-					System.out.println("All the pets have had their water bowls refilled!");
-
-				case "3":
-					System.out.println("Which pet would you like to play with?");
-					String petPlayInput = input.next();
-					petShelter.whichPet(petPlayInput).fetch();
-				case "4":
-					// petShelter.addPet();
-				case "5":
-					// petShelter.removePet(adoptedPet);
-				case "6":
-					System.out.println("Have a nice day.");
-					System.exit(0);
+			do {
+				System.out.println("This is the status of your current pets:");
+				System.out.println();
+				System.out.println("Name\t\t|Hunger\t|Thirst\t|Boredom");
+				System.out.println("___________________________________________");
+				for (NewVirtualPet currentPet : petShelter.allPets()) {
+					System.out.println(currentPet.getName() + "\t\t" + "|  " + currentPet.getHunger() + "\t" + "|  " + currentPet.getThirst()
+							+ "\t" + "|  " + currentPet.getBoredom());
+					System.out.println("___________________________________________");
 
 				}
+				System.out.println("\n");
+				System.out.println("\t1. Feed the pets");
+				System.out.println("\t2. Water the pets");
+				System.out.println("\t3. Play with a pet");
+				System.out.println("\t4. Adopt a pet");
+				System.out.println("\t5. Admit a pet");
+				System.out.println("\t6. Quit\n");
+				System.out.print("What would you like to do next:");
+
+				userChoice = input.next();
+			} while (!userChoice.equals("1") && !userChoice.equals("2") && !userChoice.equals("3")
+					&& !userChoice.equals("4") && !userChoice.equals("5") && !userChoice.equals("6"));
+
+			switch (userChoice) {
+
+			case "1":
+				petShelter.feedAllPets();
+				System.out.println("All the pets have had their food bowls refilled!");
+				petShelter.tickAllPets();
+				break;
+			case "2":
+				petShelter.waterAllPets();
+				System.out.println("All the pets have had their water bowls refilled!");
+				petShelter.tickAllPets();
+
+				break;
+			case "3":
+				System.out.println("Which pet would you like to play with?");
+				String petPlayInput = input.next();
+				petShelter.whichPet(petPlayInput).fetch();
+				System.out.println("You threw the ball with " + petPlayInput + ", and he liked it.\n");
+				petShelter.tickAllPets();
+
+			break;
+			case "4":
+				// petShelter.addPet();
+				petShelter.tickAllPets();
+
+			case "5":
+				// petShelter.removePet(adoptedPet);
+				petShelter.tickAllPets();
+
+			case "6":
+				System.out.println("Have a nice day.");
+				System.exit(0);
+
 			}
-		}
+		} input.close();
 	}
 }
