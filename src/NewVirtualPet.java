@@ -19,10 +19,14 @@ public class NewVirtualPet {
 		this.boredom = boredom;
 			}
 	
+	
 	public NewVirtualPet(String petName, String description) {
 		this.petName = petName;
 		this.description = description;
 	}
+	
+	NewVirtualPet Billy = new NewVirtualPet("Billy", "Likes to chew on tires", 10, 10, 10, 10);
+
 	
 	public String getName() {
 		return petName;
@@ -30,6 +34,22 @@ public class NewVirtualPet {
 	
 	public String getDescription() {
 		return description;
+	}
+	
+	public int getHunger() {
+		return hunger;
+	}
+	
+	public int getThirst() {
+		return thirst;
+	}
+	
+	public int getTiredness() {
+		return tiredness;
+	}
+	
+	public int getBoredom() {
+		return boredom;
 	}
 
 	public String statusPet() {
@@ -53,12 +73,10 @@ public class NewVirtualPet {
 
 	void feed() {
 		hunger += 5;
-		tiredness -= 1;
 	}
 
 	void water() {
 		thirst += 5;
-		tiredness -= 1;
 	}
 
 	void rest() {
@@ -66,17 +84,14 @@ public class NewVirtualPet {
 	}
 
 	void fetch() {
-		hunger -= 1;
-		thirst -= 1;
-		tiredness -= 2;
 		boredom += 6;
 	}
 
 	void tick() {
-		hunger -= 2;
-		thirst -= 2;
-		tiredness -= 3;
-		boredom -= 3;
+		hunger -= 1;
+		thirst -= 1;
+		tiredness -= 2;
+		boredom -= 2;
 	}
 }
 
