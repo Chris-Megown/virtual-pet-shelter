@@ -9,10 +9,12 @@ public class VirtualPetShelterApp {
 		System.out.println("The happiest pet-place on Earth!");
 
 		String userChoice;
+		NewVirtualPet petThings = new NewVirtualPet();
 		VirtualPetShelter petShelter = new VirtualPetShelter();
 		while (petShelter.myShelter.isEmpty()) {
 			System.out.println("This is the status of your current pets:");
-	//		System.out.println(newPet);
+
+			// System.out.println(newPet);
 			// need to put the for-each loop for initial pets here
 
 			do {
@@ -31,6 +33,12 @@ public class VirtualPetShelterApp {
 			switch (userChoice) {
 
 			case "1":
+				petShelter.feedAllPets();
+				
+			case "2":
+				petShelter.waterAllPets();
+			case "3":
+				
 			}
 		}
 	}

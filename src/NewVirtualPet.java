@@ -1,32 +1,28 @@
-import java.util.Random;
 
 public class NewVirtualPet {
 
-	Random random = new Random();
 	String petName;
 	String description;
 	int hunger = 25;
 	int thirst = 25;
-	int tiredness = 25;
 	int boredom = 25;
 
-	public NewVirtualPet(String petName, String description, int hunger, int thirst, int tiredness, int boredom) {
+	public NewVirtualPet(String petName, String description, int hunger, int thirst, int boredom) {
 		this.petName = petName;
 		this.description = description;
 		this.hunger = hunger;
 		this.thirst = thirst;
-		this.tiredness = tiredness;
 		this.boredom = boredom;
 			}
-	
 	
 	public NewVirtualPet(String petName, String description) {
 		this.petName = petName;
 		this.description = description;
+		hunger = 25;
+		thirst = 25;
+		boredom = 25;
 	}
 	
-	NewVirtualPet Billy = new NewVirtualPet("Billy", "Likes to chew on tires", 10, 10, 10, 10);
-
 	
 	public String getName() {
 		return petName;
@@ -44,17 +40,8 @@ public class NewVirtualPet {
 		return thirst;
 	}
 	
-	public int getTiredness() {
-		return tiredness;
-	}
-	
 	public int getBoredom() {
 		return boredom;
-	}
-
-	public String statusPet() {
-		return "\n" + petName + "'s current stats are as follows.\nHunger: " + hunger + "\nThirst: " + thirst
-				+ "\nTiredness: " + tiredness + "\nBoredom: " + boredom;
 	}
 	
 
@@ -79,9 +66,6 @@ public class NewVirtualPet {
 		thirst += 5;
 	}
 
-	void rest() {
-		tiredness += 10;
-	}
 
 	void fetch() {
 		boredom += 6;
