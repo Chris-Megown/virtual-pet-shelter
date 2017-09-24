@@ -13,8 +13,8 @@ public class NewVirtualPet {
 		this.hunger = hunger;
 		this.thirst = thirst;
 		this.boredom = boredom;
-			}
-	
+	}
+
 	public NewVirtualPet(String petName, String description) {
 		this.petName = petName;
 		this.description = description;
@@ -22,28 +22,26 @@ public class NewVirtualPet {
 		thirst = 25;
 		boredom = 25;
 	}
-	
-	
+
 	public String getName() {
 		return petName;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public int getHunger() {
 		return hunger;
 	}
-	
+
 	public int getThirst() {
 		return thirst;
 	}
-	
+
 	public int getBoredom() {
 		return boredom;
 	}
-	
 
 	public String petStarve() {
 		return "\n" + petName + " dies of Starvation...FeelsBadMan.";
@@ -57,7 +55,6 @@ public class NewVirtualPet {
 		return (hunger > 0 && thirst > 0);
 	}
 
-
 	void feed() {
 		hunger += 5;
 	}
@@ -66,7 +63,6 @@ public class NewVirtualPet {
 		thirst += 5;
 	}
 
-
 	void fetch() {
 		boredom += 6;
 	}
@@ -74,8 +70,6 @@ public class NewVirtualPet {
 	void tick() {
 		hunger -= 1;
 		thirst -= 1;
-		tiredness -= 2;
 		boredom -= 2;
 	}
 }
-

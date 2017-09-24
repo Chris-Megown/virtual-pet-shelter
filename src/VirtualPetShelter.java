@@ -1,40 +1,42 @@
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class VirtualPetShelter {
 
+	String petName;
+
 	Map<String, NewVirtualPet> myShelter = new HashMap<String, NewVirtualPet>();
-	NewVirtualPet metaPet = new NewVirtualPet(null, null, 0, 0, 0);
 
-	NewVirtualPet Billy = new NewVirtualPet("Billy", "Likes to chew on tires", 10, 10, 10);
-	myShelter.put("Billy", "Billy", "Likes to chew on tires", 10, 10, 10, 10);
-	
-	
+	public NewVirtualPet whichPet(String name) {
+		return myShelter.get(name);
+	}
+
+	public String getName(String petName) {
+		return petName;
+	}
+
 	public void addPet(NewVirtualPet newPet) {
-		String nameSearch = newPet.getName();
-		myShelter.put(nameSearch, newPet);
+		myShelter.put(newPet.getName(), newPet);
 	}
 
-	public void removePet(NewVirtualPet newPet) {
-		String nameSearch = newPet.getName();
-		myShelter.remove(nameSearch);
+	public void removePet(String adoptedPet) {
+		myShelter.remove(adoptedPet);
 	}
-	
-	
+
+	public void playWithAPet(NewVirtualPet playfulPet) {
+		playfulPet.fetch();
+	}
+
 	public void feedAllPets() {
-		for (Entry<String, NewVirtualPet> entry : myShelter.entrySet()) {
-			metaPet.feed();
+		for (NewVirtualPet petToFeed : myShelter.values()) {
+			petToFeed.feed();
 		}
-		System.out.println("All the pets have had their food bowls refilled!");
-	}
-	
-	public void waterAllPets() {
-		for (Entry<String, NewVirtualPet> entry : myShelter.entrySet()) {
-			metaPet.water();
-		}
-		System.out.println("All the pets have had their water bowls refilled!");
 	}
 
-	
+	public void waterAllPets() {
+		for (NewVirtualPet watering : myShelter.values()) {
+			watering.water();
+		}
+	}
+
 }
