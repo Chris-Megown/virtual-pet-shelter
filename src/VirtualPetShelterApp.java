@@ -13,7 +13,6 @@ public class VirtualPetShelterApp {
 		petShelter.addPet(wanda);
 		System.out.println("Welcome to Petopia!");
 		System.out.println("The happiest pet-place on Earth!");
-		
 
 		String userChoice;
 		// might make this false within a boolean
@@ -25,8 +24,8 @@ public class VirtualPetShelterApp {
 				System.out.println("Name\t\t|Hunger\t|Thirst\t|Boredom");
 				System.out.println("___________________________________________");
 				for (NewVirtualPet currentPet : petShelter.allPets()) {
-					System.out.println(currentPet.getName() + "\t\t" + "|  " + currentPet.getHunger() + "\t" + "|  " + currentPet.getThirst()
-							+ "\t" + "|  " + currentPet.getBoredom());
+					System.out.println(currentPet.getName() + "\t\t" + "|  " + currentPet.getHunger() + "\t" + "|  "
+							+ currentPet.getThirst() + "\t" + "|  " + currentPet.getBoredom());
 					System.out.println("___________________________________________");
 
 				}
@@ -63,20 +62,35 @@ public class VirtualPetShelterApp {
 				System.out.println("You threw the ball with " + petPlayInput + ", and he liked it.\n");
 				petShelter.tickAllPets();
 
-			break;
+				break;
 			case "4":
-				// petShelter.addPet();
+				System.out.println("Which pet would you like to adopt? Enter their name and kind of pet below.");
+				for (NewVirtualPet currentPet : petShelter.allPets()) {
+					System.out.println(currentPet.getName() + ", " + currentPet.getDescription());
+				}
+				String adoptablePet = input.next();
+				petShelter.removePet(adoptablePet);
+				System.out.println("You adopted " + adoptablePet);
 				petShelter.tickAllPets();
+				break;
 
 			case "5":
-				// petShelter.removePet(adoptedPet);
+				System.out.println("Oh look, you have found another homeless creatuer.");
+				System.out.print("What is the pet's name:");
+				String newPetName = input.next();
+				System.out.print("What kind of animal is this pet:");
+				String newPetDescription = input.next();
+				NewVirtualPet foundPet = new NewVirtualPet(newPetName, newPetDescription);
+				petShelter.addPet(foundPet);
+				System.out.println("\nHere at Petopia we will take great care of " + newPetName + ".\n");
 				petShelter.tickAllPets();
-
+				break;
 			case "6":
 				System.out.println("Have a nice day.");
 				System.exit(0);
 
 			}
-		} input.close();
+		}
+		input.close();
 	}
 }
