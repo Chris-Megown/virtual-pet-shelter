@@ -64,6 +64,7 @@ public class VirtualPetShelterApp {
 				System.out.print("\nWhich pet would you like to play with: ");
 
 				String petPlayInput = input.next();
+				petPlayInput = petPlayInput.substring(0, 1).toUpperCase() + petPlayInput.substring(1).toLowerCase();
 				petShelter.whichPet(petPlayInput).fetch();
 				System.out.println("\nYou threw the ball with " + petPlayInput + ", and he liked it.\n");
 				petShelter.tickAllPets();
@@ -75,16 +76,18 @@ public class VirtualPetShelterApp {
 					System.out.println(currentPet.getName() + ", " + currentPet.getDescription());
 				}
 				String adoptablePet = input.next();
+				adoptablePet = adoptablePet.substring(0, 1).toUpperCase() + adoptablePet.substring(1).toLowerCase();
 				petShelter.removePet(adoptablePet);
 				System.out.println("You adopted " + adoptablePet);
 				petShelter.tickAllPets();
 				break;
 
 			case "5":
-				System.out.println("If you would like to admit an animal here we'll need some information.");
-				System.out.print("What is the pet's name:");
+				System.out.println("\nIf you would like to admit an animal here we'll need some information.");
+				System.out.print("\nWhat is the animal's name: ");
 				String newPetName = input.next();
-				System.out.print("What kind of animal is this pet:");
+				newPetName = newPetName.substring(0, 1).toUpperCase() + newPetName.substring(1).toLowerCase();
+				System.out.print("\nWhat kind of animal is this: ");
 				String newPetDescription = input.next();
 				NewVirtualPet foundPet = new NewVirtualPet(newPetName, newPetDescription);
 				petShelter.addPet(foundPet);
@@ -92,7 +95,7 @@ public class VirtualPetShelterApp {
 				petShelter.tickAllPets();
 				break;
 			case "6":
-				System.out.println("Have a nice day.");
+				System.out.println("\nThanks for stopping by and have a nice day.");
 				System.exit(0);
 
 			}
