@@ -11,14 +11,36 @@ public class VirtualPetShelterApp {
 		petShelter.addPet(billy);
 		petShelter.addPet(stuart);
 		petShelter.addPet(wanda);
-		System.out.println("Welcome to Petopia!");
-		System.out.println("The happiest pet-place on Earth!");
+		System.out.println("     -Welcome to Petopia!-");
+		System.out.println("\nThe happiest pet-place on Earth!\n");
 
 		String userChoice;
 		// might make this false within a boolean
 		while (!petShelter.myShelter.isEmpty()) {
 
 			do {
+				for (NewVirtualPet maybeDeadPet : petShelter.allPets()) {
+					if (maybeDeadPet.getHunger() <= 0) {
+						System.out.println(
+								maybeDeadPet.getName() + " has died of starvation," + " we are bad at our jobs...\n");
+						petShelter.removePet(maybeDeadPet.getName());
+						break;
+					}
+					if (maybeDeadPet.getThirst() <= 0) {
+						System.out.println(
+								maybeDeadPet.getName() + " has died of dehydration," + " we are bad at our jobs...\n");
+						petShelter.removePet(maybeDeadPet.getName());
+						break;
+					}
+
+				}
+				for (NewVirtualPet maybeBoredPet : petShelter.allPets()) {
+
+					if (maybeBoredPet.getBoredom() < 5) {
+						System.out
+								.println("You should really consider playing with " + maybeBoredPet.getName() + ".\n");
+					}
+				}
 				System.out.println("This is the status of your current pets:");
 				System.out.println();
 				System.out.println("Name\t\t|Hunger\t|Thirst\t|Boredom");
@@ -57,9 +79,12 @@ public class VirtualPetShelterApp {
 				break;
 			case "3":
 				System.out.println();
+				System.out.println("Name\t  |  Description");
+				System.out.println("--------------------------");
 				for (NewVirtualPet currentPet : petShelter.allPets()) {
-					System.out.println(currentPet.getName() + "\t\t" + "|  " + currentPet.getDescription() + "\n");
 
+					System.out.println(currentPet.getName() + "\t" + "  |  " + currentPet.getDescription());
+					System.out.println("--------------------------");
 				}
 				System.out.print("\nWhich pet would you like to play with: ");
 
@@ -100,6 +125,8 @@ public class VirtualPetShelterApp {
 
 			}
 		}
+		System.out
+				.println("All the Petopia animals have either been adopted or traggically died. Have a wonderful day!");
 		input.close();
 	}
 }

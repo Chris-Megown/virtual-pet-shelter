@@ -50,4 +50,8 @@ public class VirtualPetShelter {
 		}
 	}
 
+	public void anyPetsDead(NewVirtualPet checkPet) {
+		checkPet.petIsDed();
+	}
+
 }

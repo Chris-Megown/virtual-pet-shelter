@@ -43,16 +43,8 @@ public class NewVirtualPet {
 		return boredom;
 	}
 
-	public String petStarve() {
-		return "\n" + petName + " dies of Starvation...FeelsBadMan.";
-	}
-
-	public String petDehydrate() {
-		return petName + " has died of Dehydration... FeelsBadMan";
-	}
-
-	boolean petIsNotDed() {
-		return (hunger > 0 && thirst > 0);
+	boolean petIsDed() {
+		return (hunger <= 0 && thirst <= 0);
 	}
 
 	void feed() {
