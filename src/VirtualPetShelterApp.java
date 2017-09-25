@@ -5,8 +5,8 @@ public class VirtualPetShelterApp {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		VirtualPetShelter petShelter = new VirtualPetShelter();
-		NewVirtualPet billy = new NewVirtualPet("Billy", "Baby Lion", 10, 10, 10);
-		NewVirtualPet stuart = new NewVirtualPet("Stuart", "Mouscateer", 4, 4, 4);
+		NewVirtualPet billy = new NewVirtualPet("Billy", "Baby Lion", 40, 40, 40);
+		NewVirtualPet stuart = new NewVirtualPet("Stuart", "Mouscateer", 20, 20, 20);
 		NewVirtualPet wanda = new NewVirtualPet("Wanda", "Wooly Mammoth", 30, 30, 30);
 		petShelter.addPet(billy);
 		petShelter.addPet(stuart);
@@ -22,11 +22,11 @@ public class VirtualPetShelterApp {
 				System.out.println("This is the status of your current pets:");
 				System.out.println();
 				System.out.println("Name\t\t|Hunger\t|Thirst\t|Boredom");
-				System.out.println("___________________________________________");
+				System.out.println("------------------------------------------");
 				for (NewVirtualPet currentPet : petShelter.allPets()) {
 					System.out.println(currentPet.getName() + "\t\t" + "|  " + currentPet.getHunger() + "\t" + "|  "
 							+ currentPet.getThirst() + "\t" + "|  " + currentPet.getBoredom());
-					System.out.println("___________________________________________");
+					System.out.println("------------------------------------------");
 
 				}
 				System.out.println("\n");
@@ -36,7 +36,7 @@ public class VirtualPetShelterApp {
 				System.out.println("\t4. Adopt a pet");
 				System.out.println("\t5. Admit a pet");
 				System.out.println("\t6. Quit\n");
-				System.out.print("What would you like to do next:");
+				System.out.print("What would you like to do next: ");
 
 				userChoice = input.next();
 			} while (!userChoice.equals("1") && !userChoice.equals("2") && !userChoice.equals("3")
@@ -46,20 +46,26 @@ public class VirtualPetShelterApp {
 
 			case "1":
 				petShelter.feedAllPets();
-				System.out.println("All the pets have had their food bowls refilled!");
+				System.out.println("\nAll the pets have had their food bowls refilled!\n");
 				petShelter.tickAllPets();
 				break;
 			case "2":
 				petShelter.waterAllPets();
-				System.out.println("All the pets have had their water bowls refilled!");
+				System.out.println("\nAll the pets have had their water bowls refilled!\n");
 				petShelter.tickAllPets();
 
 				break;
 			case "3":
-				System.out.println("Which pet would you like to play with?");
+				System.out.println();
+				for (NewVirtualPet currentPet : petShelter.allPets()) {
+					System.out.println(currentPet.getName() + "\t\t" + "|  " + currentPet.getDescription() + "\n");
+
+				}
+				System.out.print("\nWhich pet would you like to play with: ");
+
 				String petPlayInput = input.next();
 				petShelter.whichPet(petPlayInput).fetch();
-				System.out.println("You threw the ball with " + petPlayInput + ", and he liked it.\n");
+				System.out.println("\nYou threw the ball with " + petPlayInput + ", and he liked it.\n");
 				petShelter.tickAllPets();
 
 				break;
@@ -75,7 +81,7 @@ public class VirtualPetShelterApp {
 				break;
 
 			case "5":
-				System.out.println("Oh look, you have found another homeless creatuer.");
+				System.out.println("If you would like to admit an animal here we'll need some information.");
 				System.out.print("What is the pet's name:");
 				String newPetName = input.next();
 				System.out.print("What kind of animal is this pet:");
